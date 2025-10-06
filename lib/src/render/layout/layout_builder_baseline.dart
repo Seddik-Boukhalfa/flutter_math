@@ -64,9 +64,10 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
       size = constraints.constrain(child!.size);
     } else {
       // FIX: Handle infinite constraints properly
+
       size = Size(
-        constraints.hasBoundedWidth ? constraints.maxWidth : 0.0,
-        constraints.hasBoundedHeight ? constraints.maxHeight : 0.0,
+        constraints.hasInfiniteWidth ? 0 : constraints.minWidth,
+        constraints.hasInfiniteHeight ? 0 : constraints.minHeight,
       );
     }
   }
